@@ -2533,7 +2533,8 @@ a {
     color: #fff; }
 
 ::selection {
-  background-color: #C2185B; }
+  background-color: #C2185B;
+  color: #fff; }
 
 body {
   font-family: 'Lato', sans-serif;
