@@ -1,4 +1,4 @@
-/* Author: Naeun Kim(soo.kim.off@gmail.com) | 2018.02.01 */
+/* Author: Naeun Kim(naeun.off@gmail.com) | 2018.02.01 */
 
 
 @import 'responsive-keyframe';
@@ -17,6 +17,11 @@ a{
 	}
 }
 
+ul li {
+	list-style-type: none;
+	letter-spacing: 0.05em;
+}
+
 ::selection {
     background-color: #C2185B;
     color: #fff;
@@ -29,10 +34,10 @@ body {
 
 
 h2 {
-	margin: 10px 0;
+	margin: 10px 0 40px 0;
 	font-size: 3.5em;
 	font-weight: 400;
-	letter-spacing: 0.05em;
+	letter-spacing: 0.02em;
 }
 
 section {
@@ -52,7 +57,17 @@ section {
 		font-size: 1em;
 		letter-spacing: 0.05em;
 		font-weight: 400;
-		line-height: 1.8;
+		line-height: 1.4;
+		i:after {
+			content: '';
+			display: block;
+		}
+		& + ul {
+			text-align: left;
+			li {
+				line-height: 1.6;
+			}
+		}
 	}
 	.wrap-slider {
 		margin-top: 30px;
@@ -116,54 +131,23 @@ section {
 	}
 }
 
-.icon-fb-w{
-	width: 40px;
-	height: 40px;
-	@include icon;
-	@include icon-common(0,0);
-}
-
-.icon-tw-w{
-	width: 40px;
-	height: 40px;
-	@include icon;
-	@include icon-common(-40px,0);
-}
-
-.icon-insta-w{
-	width: 40px;
-	height: 40px;
-	@include icon;
-	@include icon-common(-80px,0);
-}
-
-
-.icon-fb-w-s{
-	width: 30px;
-	height: 31px;
-	@include icon;
-	@include icon-common(0,-40px);
-}
-
-.icon-tw-w-s{
-	width: 30px;
-	height: 31px;
-	@include icon;
-	@include icon-common(-40px,-40px);
-}
-
-.icon-insta-w-s{
-	width: 30px;
-	height: 31px;
-	@include icon;
-	@include icon-common(-80px,-40px);
-}
-
 .icon-arr {
 	width: 16px;
 	height: 16px;
 	@include icon;
 	@include icon-common(0,-80px);
+}
+
+.icon-happy {
+	width: 32px;
+	height: 32px;
+	margin-top: -3px;
+	margin-left: 5px;
+	vertical-align: middle;
+	@include icon;
+	background: url('../images/happy.svg') no-repeat;
+	background-size: contain;
+	cursor: default;
 }
 
 
@@ -172,10 +156,6 @@ section {
 @mixin slider-background-image($file){
 	background: url('../images/' + $file + '.png') no-repeat;
 	background-size: cover;
-	@media all and (max-width: 425px) {
-		background: url('../images/' + $file + '_m' + '.png') no-repeat;
-		background-size: cover;
-	}
 }
 
 .slider {
@@ -195,6 +175,7 @@ section {
 	}
 	@media all and (max-width: 750px) {
 		float: none;
+		margin: auto;
 	}
 	&:hover li {
 		animation-play-state: paused !important;
@@ -279,10 +260,10 @@ section {
 
 @media all and (max-width: 425px) {
 
-	i:after {
-		content: '';
-		display: block;
-	}
+	// i:after {
+	// 	content: '';
+	// 	display: block;
+	// }
 
 	h2 {
 		font-size: 2.5em;
@@ -305,7 +286,13 @@ section {
 			margin-top: 10px;
 		}
 		p {
+			padding: 0 10px;
 			word-break: break-word;
+			text-align: left;
+			line-height: 1.4;
+			i:after {
+				display: inline;
+			}
 		}
 		.sns {
 			position: static;
@@ -326,54 +313,5 @@ section {
 			}
 		}
 	}
-
-	.slider {
-		width: auto;
-		min-height: 140px;
-		height: auto;
-		.mask {
-			min-height: 140px;
-			height: auto;
-			ul {
-				li {
-					position: relative;
-					top: initial;
-					width: 100%;
-					height: auto;
-					min-height: 100px;
-					margin-bottom: 5px;
-					a span {
-						top: 0;
-						left: 0;
-						right: initial;
-						bottom: initial;
-						width: 150px;
-						height: 40px;
-						padding: 0;
-						line-height: 40px;
-						letter-spacing: 0.02em;
-						font-weight: 700;
-						i {
-							font-weight: 500;
-							&:after {
-								content: '';
-								display: inline-block;
-							}
-						}
-						&:after {
-							display: none;
-						}
-					}
-				}
-			}
-		}
-	}
-
-	@for $i from 1 through 6 {
-		.slider li.slide0#{$i} {
-			animation: none;
-		}
-	}
-
 }
 

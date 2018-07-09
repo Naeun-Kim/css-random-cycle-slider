@@ -1,5 +1,10 @@
 //Naeun Kim | 2018.02.01
+//add variable and mixin | 2018.07.09 
 
+$imageHeight: 368px;
+$desktop: $imageHeight;
+$tablet: $imageHeight * 0.88;
+$mobile: $imageHeight * 0.625;
 
 @mixin keyframes( $animationName )
 {
@@ -20,74 +25,84 @@
     }
 }
 
+$position: 0 !default;
+$transperant: 0 !default;
+$zindex: 1 !default;
+
+@mixin sliderValue($position, $transperant, $zindex:"") {
+	top: $position;
+	opacity: $transperant;
+	z-index: unquote($zindex);
+}
+
 /* Slide Animation */
 
 @include keyframes(cycle01) {
 	0% { top: 0; }
 	10% { top: 0; }
-	40% { top: 0; opacity: 1; z-index: 0; }
-	50% { top: 368px; opacity: 0; z-index: 0; }
-	51% { top: -368px; opacity: 0; z-index: -1; }
-	80% { top: -368px; opacity: 0; z-index: 0; }
-	90% { top: 0; opacity: 1; }
-	100% { top: 0; opacity: 1; }
+	40% { @include sliderValue(0, 1, 0) }
+	50% { @include sliderValue($desktop, 0, 0) }
+	51% { @include sliderValue(-$desktop, 0, -1) }
+	80% { @include sliderValue(-$desktop, 0, 0) }
+	90% { @include sliderValue(0, 1) }
+	100% { @include sliderValue(0, 1) }
 }
 
 @include keyframes(cycle02) {
-	0%  { top:-368px; opacity:0; }
-	40% { top:-368px; opacity:0; }
-	50% { top:0px; opacity:1; }
-	60% { top:0px; opacity:1; }
-	80% { top:0px; opacity:1; z-index: 0;}
-	90% { top:368px; opacity:0; z-index:0; }
-	91% { top:-368px; opacity:0; z-index:-1; }
-	100%{ top:-368px; opacity:0; z-index:-1; }
+	0%  { @include sliderValue(-$desktop, 0) }
+	40% { @include sliderValue(-$desktop, 0) }
+	50% { @include sliderValue(0, 1) }
+	60% { @include sliderValue(0, 1) }
+	80% { @include sliderValue(0, 1, 0) }
+	90% { @include sliderValue($desktop, 0, 0) }
+	91% { @include sliderValue(-$desktop, 0, -1) }
+	100%{ @include sliderValue(-$desktop, 0, -1) }
 }
 
 @include keyframes(cycle03) {
 	0% { top: 0; }
 	18% { top: 0; }
-	48% { top: 0; opacity: 1; z-index: 0; }
-	58% { top: 368px; opacity: 0; z-index: 0; }
-	59% { top: -368px; opacity: 0; z-index: -1; }
-	88% { top: -368px; opacity: 0; z-index: 0; }
-	98% { top: 0; opacity: 1; }
-	100% { top: 0; opacity: 1; }
+	48% { @include sliderValue(0, 1, 0) }
+	58% { @include sliderValue($desktop, 0, 0) }
+	59% { @include sliderValue(-$desktop, 0, -1) }
+	88% { @include sliderValue(-$desktop, 0, 0) }
+	98% { @include sliderValue(0, 1) }
+	100% { @include sliderValue(0, 1) }
 }
 
 
 @include keyframes(cycle04) {
-	0%  { top:-368px; opacity:0; }
-	48% { top:-368px; opacity:0; }
-	58% { top:0px; opacity:1; }
-	68% { top:0px; opacity:1; }
-	88% { top:0px; opacity:1; z-index: 0;}
-	98% { top:368px; opacity:0; z-index:0; }
-	99% { top:-368px; opacity:0; z-index:-1; }
-	100%{ top:-368px; opacity:0; z-index:-1; }
+	0%  { @include sliderValue(-$desktop, 0) }
+	48% { @include sliderValue(-$desktop, 0) }
+	58% { @include sliderValue(0, 1) }
+	68% { @include sliderValue(0, 1) }
+	88% { @include sliderValue(0, 1, 0) }
+	98% { @include sliderValue($desktop, 0, 0) }
+	99% { @include sliderValue(-$desktop, 0, -1) }
+	100%{ @include sliderValue(-$desktop, 0, -1) }
 }
 
 @include keyframes(cycle05) {
 	0% { top: 0; }
 	13% { top: 0; }
-	43% { top: 0; opacity: 1; z-index: 0; }
-	53% { top: 368px; opacity: 0; z-index: 0; }
-	54% { top: -368px; opacity: 0; z-index: -1; }
-	83% { top: -368px; opacity: 0; z-index: 0; }
-	93% { top: 0; opacity: 1; }
-	100% { top: 0; opacity: 1; }
+	43% { @include sliderValue(0, 1, 0) }
+	53% { @include sliderValue($desktop, 0, 0) }
+	54% { @include sliderValue(-$desktop, 0, -1) }
+	83% { @include sliderValue(-$desktop, 0, 0) }
+	93% { @include sliderValue(0, 1) }
+	100% { @include sliderValue(0, 1) }
 }
 
 
 @include keyframes(cycle06) {
-	0%  { top:-368px; opacity:0; }
-	43% { top:-368px; opacity:0; }
-	53% { top:0px; opacity:1; }
-	63% { top:0px; opacity:1; }
-	83% { top:0px; opacity:1; z-index: 0;}
-	93% { top:368px; opacity:0; z-index:0; }
-	94% { top:-368px; opacity:0; z-index:-1; }
-	100%{ top:-368px; opacity:0; z-index:-1; }
+	0%  { @include sliderValue(-$desktop, 0) }
+	43% { @include sliderValue(-$desktop, 0) }
+	53% { @include sliderValue(0, 1) }
+	63% { @include sliderValue(0, 1) }
+	83% { @include sliderValue(0, 1, 0) }
+	93% { @include sliderValue($desktop, 0, 0) }
+	94% { @include sliderValue(-$desktop, 0, -1) }
+	100%{ @include sliderValue(-$desktop, 0, -1) }
 }
 
 
@@ -96,69 +111,69 @@
 	@include keyframes(cycle01) {
 		0% { top: 0; }
 		10% { top: 0; }
-		40% { top: 0; opacity: 1; z-index: 0; }
-		50% { top: 325px; opacity: 0; z-index: 0; }
-		51% { top: -325px; opacity: 0; z-index: -1; }
-		80% { top: -325px; opacity: 0; z-index: 0; }
-		90% { top: 0; opacity: 1; }
-		100% { top: 0; opacity: 1; }
+		40% { @include sliderValue(0, 1, 0) }
+		50% { @include sliderValue($tablet, 0, 0) }
+		51% { @include sliderValue(-$tablet, 0, -1) }
+		80% { @include sliderValue(-$tablet, 0, 0) }
+		90% { @include sliderValue(0, 1) }
+		100% { @include sliderValue(0, 1) }
 	}
 
 	@include keyframes(cycle02) {
-		0%  { top:-325px; opacity:0; }
-		40% { top:-325px; opacity:0; }
-		50% { top:0px; opacity:1; }
-		60% { top:0px; opacity:1; }
-		80% { top:0px; opacity:1; z-index: 0;}
-		90% { top:325px; opacity:0; z-index:0; }
-		91% { top:-325px; opacity:0; z-index:-1; }
-		100%{ top:-325px; opacity:0; z-index:-1; }
+		0%  { @include sliderValue(-$tablet, 0) }
+		40% { @include sliderValue(-$tablet, 0) }
+		50% { @include sliderValue(0, 1) }
+		60% { @include sliderValue(0, 1) }
+		80% { @include sliderValue(0, 1, 0) }
+		90% { @include sliderValue($tablet, 0, 0) }
+		91% { @include sliderValue(-$tablet, 0, -1) }
+		100%{ @include sliderValue(-$tablet, 0, -1) }
 	}
 
 	@include keyframes(cycle03) {
 		0% { top: 0; }
 		18% { top: 0; }
-		48% { top: 0; opacity: 1; z-index: 0; }
-		58% { top: 325px; opacity: 0; z-index: 0; }
-		59% { top: -325px; opacity: 0; z-index: -1; }
-		88% { top: -325px; opacity: 0; z-index: 0; }
-		98% { top: 0; opacity: 1; }
-		100% { top: 0; opacity: 1; }
+		48% { @include sliderValue(0, 1, 0) }
+		58% { @include sliderValue($tablet, 0, 0) }
+		59% { @include sliderValue(-$tablet, 0, -1) }
+		88% { @include sliderValue(-$tablet, 0, 0) }
+		98% { @include sliderValue(0, 1) }
+		100% { @include sliderValue(0, 1) }
 	}
 
 
 	@include keyframes(cycle04) {
-		0%  { top:-325px; opacity:0; }
-		48% { top:-325px; opacity:0; }
-		58% { top:0px; opacity:1; }
-		68% { top:0px; opacity:1; }
-		88% { top:0px; opacity:1; z-index: 0;}
-		98% { top:325px; opacity:0; z-index:0; }
-		99% { top:-325px; opacity:0; z-index:-1; }
-		100%{ top:-325px; opacity:0; z-index:-1; }
+		0%  { @include sliderValue(-$tablet, 0) }
+		48% { @include sliderValue(-$tablet, 0) }
+		58% { @include sliderValue(0, 1) }
+		68% { @include sliderValue(0, 1) }
+		88% { @include sliderValue(0, 1, 0) }
+		98% { @include sliderValue($tablet, 0, 0) }
+		99% { @include sliderValue(-$tablet, 0, -1) }
+		100%{ @include sliderValue(-$tablet, 0, -1) }
 	}
 
 	@include keyframes(cycle05) {
 		0% { top: 0; }
 		13% { top: 0; }
-		43% { top: 0; opacity: 1; z-index: 0; }
-		53% { top: 325px; opacity: 0; z-index: 0; }
-		54% { top: -325px; opacity: 0; z-index: -1; }
-		83% { top: -325px; opacity: 0; z-index: 0; }
-		93% { top: 0; opacity: 1; }
-		100% { top: 0; opacity: 1; }
+		43% { @include sliderValue(0, 1, 0) }
+		53% { @include sliderValue($tablet, 0, 0) }
+		54% { @include sliderValue(-$tablet, 0, -1) }
+		83% { @include sliderValue(-$tablet, 0, 0) }
+		93% { @include sliderValue(0, 1) }
+		100% { @include sliderValue(0, 1) }
 	}
 
 
 	@include keyframes(cycle06) {
-		0%  { top:-325px; opacity:0; }
-		43% { top:-325px; opacity:0; }
-		53% { top:0px; opacity:1; }
-		63% { top:0px; opacity:1; }
-		83% { top:0px; opacity:1; z-index: 0;}
-		93% { top:325px; opacity:0; z-index:0; }
-		94% { top:-325px; opacity:0; z-index:-1; }
-		100%{ top:-325px; opacity:0; z-index:-1; }
+		0%  { @include sliderValue(-$tablet, 0) }
+		43% { @include sliderValue(-$tablet, 0) }
+		53% { @include sliderValue(0, 1) }
+		63% { @include sliderValue(0, 1) }
+		83% { @include sliderValue(0, 1, 0) }
+		93% { @include sliderValue($tablet, 0, 0) }
+		94% { @include sliderValue(-$tablet, 0, -1) }
+		100%{ @include sliderValue(-$tablet, 0, -1) }
 	}
 
 
@@ -170,69 +185,69 @@
 	@include keyframes(cycle01) {
 		0% { top: 0; }
 		10% { top: 0; }
-		40% { top: 0; opacity: 1; z-index: 0; }
-		50% { top: 230px; opacity: 0; z-index: 0; }
-		51% { top: -230px; opacity: 0; z-index: -1; }
-		80% { top: -230px; opacity: 0; z-index: 0; }
-		90% { top: 0; opacity: 1; }
-		100% { top: 0; opacity: 1; }
+		40% { @include sliderValue(0, 1, 0) }
+		50% { @include sliderValue($mobile, 0, 0) }
+		51% { @include sliderValue(-$mobile, 0, -1) }
+		80% { @include sliderValue(-$mobile, 0, 0) }
+		90% { @include sliderValue(0, 1)}
+		100% { @include sliderValue(0, 1)}
 	}
 
 	@include keyframes(cycle02) {
-		0%  { top:-230px; opacity:0; }
-		40% { top:-230px; opacity:0; }
-		50% { top:0px; opacity:1; }
-		60% { top:0px; opacity:1; }
-		80% { top:0px; opacity:1; z-index: 0;}
-		90% { top:230px; opacity:0; z-index:0; }
-		91% { top:-230px; opacity:0; z-index:-1; }
-		100%{ top:-230px; opacity:0; z-index:-1; }
+		0%  { @include sliderValue(-$mobile, 0) }
+		40% { @include sliderValue(-$mobile, 0) }
+		50% { @include sliderValue(0, 1) }
+		60% { @include sliderValue(0, 1) }
+		80% { @include sliderValue(0, 1, 0) }
+		90% { @include sliderValue($mobile, 0, 0) }
+		91% { @include sliderValue(-$mobile, 0, -1) }
+		100%{ @include sliderValue(-$mobile, 0, -1) }
 	}
 
 	@include keyframes(cycle03) {
 		0% { top: 0; }
 		18% { top: 0; }
-		48% { top: 0; opacity: 1; z-index: 0; }
-		58% { top: 230px; opacity: 0; z-index: 0; }
-		59% { top: -230px; opacity: 0; z-index: -1; }
-		88% { top: -230px; opacity: 0; z-index: 0; }
-		98% { top: 0; opacity: 1; }
-		100% { top: 0; opacity: 1; }
+		48% { @include sliderValue(0, 1, 0) }
+		58% { @include sliderValue($mobile, 0, 0) }
+		59% { @include sliderValue(-$mobile, 0, -1) }
+		88% { @include sliderValue(-$mobile, 0, 0) }
+		98% { @include sliderValue(0, 1) }
+		100% { @include sliderValue(0, 1) }
 	}
 
 
 	@include keyframes(cycle04) {
-		0%  { top:-230px; opacity:0; }
-		48% { top:-230px; opacity:0; }
-		58% { top:0px; opacity:1; }
-		68% { top:0px; opacity:1; }
-		88% { top:0px; opacity:1; z-index: 0;}
-		98% { top:230px; opacity:0; z-index:0; }
-		99% { top:-230px; opacity:0; z-index:-1; }
-		100%{ top:-230px; opacity:0; z-index:-1; }
+		0%  { @include sliderValue(-$mobile, 0) }
+		48% { @include sliderValue(-$mobile, 0) }
+		58% { @include sliderValue(0, 1) }
+		68% { @include sliderValue(0, 1) }
+		88% { @include sliderValue(0, 1, 0) }
+		98% { @include sliderValue($mobile, 0, 0) }
+		99% { @include sliderValue(-$mobile, 0, -1) }
+		100%{ @include sliderValue(-$mobile, 0, -1) }
 	}
 
 	@include keyframes(cycle05) {
 		0% { top: 0; }
 		13% { top: 0; }
-		43% { top: 0; opacity: 1; z-index: 0; }
-		53% { top: 230px; opacity: 0; z-index: 0; }
-		54% { top: -230px; opacity: 0; z-index: -1; }
-		83% { top: -230px; opacity: 0; z-index: 0; }
-		93% { top: 0; opacity: 1; }
-		100% { top: 0; opacity: 1; }
+		43% { @include sliderValue(0, 1, 0) }
+		53% { @include sliderValue($mobile, 0, 0) }
+		54% { @include sliderValue(-$mobile, 0, -1) }
+		83% { @include sliderValue(-$mobile, 0, 0) }
+		93% { @include sliderValue(0, 1) }
+		100% { @include sliderValue(0, 1) }
 	}
 
 
 	@include keyframes(cycle06) {
-		0%  { top:-230px; opacity:0; }
-		43% { top:-230px; opacity:0; }
-		53% { top:0px; opacity:1; }
-		63% { top:0px; opacity:1; }
-		83% { top:0px; opacity:1; z-index: 0;}
-		93% { top:230px; opacity:0; z-index:0; }
-		94% { top:-230px; opacity:0; z-index:-1; }
-		100%{ top:-230px; opacity:0; z-index:-1; }
+		0%  { @include sliderValue(-$mobile, 0) }
+		43% { @include sliderValue(-$mobile, 0) }
+		53% { @include sliderValue(0, 1) }
+		63% { @include sliderValue(0, 1) }
+		83% { @include sliderValue(0, 1, 0) }
+		93% { @include sliderValue($mobile, 0, 0) }
+		94% { @include sliderValue(-$mobile, 0, -1) }
+		100%{ @include sliderValue(-$mobile, 0, -1) }
 	}
 
 
