@@ -7,5 +7,5 @@ Enjoy!
 - Responsive(desktop, tablet, mobile)
 - Using SASS
 
-Demo: http://sookimoff.cafe24.com/css-random-cycle-slider/  
+Demo: http://random-slider.s3-website.ap-northeast-2.amazonaws.com/
 Reference: https://www.smashingmagazine.com/2012/04/pure-css3-cycling-slideshow/
